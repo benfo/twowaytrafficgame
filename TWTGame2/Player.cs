@@ -9,10 +9,10 @@ namespace TWTGame
     {
         public Vector2 Velocity;
 
-        public Player(Surface playerTexture)
+        public Player(Texture playerTexture)
         {
             this.IsDead = false;
-            this.Sprite = new Sprite(playerTexture);
+            this.Sprite = new Sprite(playerTexture.Surface);
         }
 
         public Rectangle BoundingBox

@@ -7,9 +7,9 @@ namespace TWTGame.Core.Graphics
     {
         void Clear(Color color);
 
-        Surface LoadTexture(string name, string path);
+        Texture LoadTexture(string name, string path);
 
-        Surface LoadTexture(string name, string path, TextureEffect effect);
+        Texture LoadTexture(string name, string path, TextureEffect effect);
 
         void Update();
 

@@ -9,11 +9,11 @@ namespace TWTGame
     {
         public Vector2 Velocity;
 
-        public Car(Vector2 startingPosition, Surface carTexture)
+        public Car(Vector2 startingPosition, Texture carTexture)
         {
             this.IsActive = true;
             this.Position = startingPosition;
-            this.Sprite = new Sprite(carTexture);
+            this.Sprite = new Sprite(carTexture.Surface);
         }
 
         public Rectangle BoundingBox

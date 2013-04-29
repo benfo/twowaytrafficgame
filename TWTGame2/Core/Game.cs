@@ -20,7 +20,6 @@ namespace TWTGame.Core
             {
                 this.Tick();
             };
-
             Events.Quit += (sender, args) =>
             {
                 this.Exit();

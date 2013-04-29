@@ -19,7 +19,7 @@ namespace TWTGame
         private Player _player;
         private MovementDirection _direction;
         private IRandomizer _randomizer;
-        private Surface _carTexture;
+        private Texture _carTexture;
         private float _speed;
         private Func<IEnumerable<Car>> _getActiveCars;
 

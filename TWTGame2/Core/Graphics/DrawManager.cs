@@ -8,12 +8,12 @@ namespace TWTGame.Core.Graphics
 {
     public class DrawManager : IDrawManager, IDisposable
     {
-        private Dictionary<string, Surface> _images;
+        private Dictionary<string, Texture> _images;
 
         public DrawManager()
         {
             this.ContentPath = "Content";
-            _images = new Dictionary<string, Surface>();
+            _images = new Dictionary<string, Texture>();
         }
 
         public string ContentPath { get; set; }
@@ -44,12 +44,12 @@ namespace TWTGame.Core.Graphics
             Video.Screen.Blit(gameObject.Sprite, new Point((int)gameObject.Position.X, (int)gameObject.Position.Y));
         }
 
-        public Surface LoadTexture(string name, string path)
+        public Texture LoadTexture(string name, string path)
         {
             return this.LoadTextureInternal(name, path);
         }
 
-        public Surface LoadTexture(string name, string path, TextureEffect effect)
+        public Texture LoadTexture(string name, string path, TextureEffect effect)
         {
             if (effect == TextureEffect.None)
             {
@@ -63,15 +63,16 @@ namespace TWTGame.Core.Graphics
                 return _images[flippedName];
             }
 
-            var surface = this.LoadTextureInternal(name, path);
+            var texture = this.LoadTextureInternal(name, path);
             var flippedSurface = effect ==
                  TextureEffect.FlippedHorizontal ?
-                 surface.CreateFlippedHorizontalSurface() :
-                 surface.CreateFlippedVerticalSurface();
+                 texture.Surface.CreateFlippedHorizontalSurface() :
+                 texture.Surface.CreateFlippedVerticalSurface();
+            var flippedTexture = new Texture(flippedSurface);
 
-            _images.Add(flippedName, flippedSurface);
+            _images.Add(flippedName, flippedTexture);
 
-            return flippedSurface;
+            return flippedTexture;
         }
 
         public void Update()
@@ -86,16 +87,17 @@ namespace TWTGame.Core.Graphics
             return flippedName;
         }
 
-        private Surface LoadTextureInternal(string name, string path)
+        private Texture LoadTextureInternal(string name, string path)
         {
             if (_images.ContainsKey(name))
             {
                 return _images[name];
             }
 
-            var surface = new Surface(Path.Combine(this.ContentPath, path));
-            _images.Add(name, surface);
-            return surface;
+            var texturePath = Path.Combine(this.ContentPath, path);
+            var texture = new Texture(new Surface(texturePath));
+            _images.Add(name, texture);
+            return texture;
         }
     }
 }
