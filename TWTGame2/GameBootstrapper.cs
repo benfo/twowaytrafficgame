@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using TWTGame.Core;
 using TWTGame.Core.Bootstrapper;
-using TWTGame.Core;
 using TWTGame.Core.Graphics;
 using TWTGame.Core.Input;
+using TWTGame.Core.Services;
 
 namespace TWTGame
 {

@@ -11,17 +11,15 @@ namespace TWTGame
     public class Road
     {
         private IDrawManager _drawManager;
-        private IKeyboard _keyboard;
         private int _laneCount;
         private int _laneHeight;
         private Rectangle _playArea;
         private Player _player;
         private IRandomizer _randomizer;
 
-        public Road(IDrawManager drawManager, IKeyboard keyboard, Player player, IRandomizer randomizer)
+        public Road(IDrawManager drawManager, Player player, IRandomizer randomizer)
         {
             _drawManager = drawManager;
-            _keyboard = keyboard;
             _player = player;
             _laneHeight = 65;
             this.Lanes = new List<Lane>();
@@ -41,10 +39,7 @@ namespace TWTGame
 
         public void Draw()
         {
-            Lanes.ForEach(lane =>
-            {
-                lane.Draw();
-            });
+            Lanes.ForEach(lane => lane.Draw());
         }
 
         public void Update(TimeSpan elapsedTime)

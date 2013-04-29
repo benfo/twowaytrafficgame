@@ -26,7 +26,7 @@ namespace TWTGame
             _player = new Player(drawManager.LoadTexture("player", "player.png", TextureEffect.FlippedHorizontal));
             _randomizer = randomizer;
 
-            _carManager = new Road(_drawManager, _keyboard, _player, _randomizer);
+            _carManager = new Road(_drawManager, _player, _randomizer);
 
             this.ResetPlayer();
         }
