@@ -13,7 +13,7 @@ namespace TWTGame
             using (var bootstrapper = new GameBootstrapper())
             {
                 bootstrapper.Initialize();
-                var game = DependencyResolver.Current.GetService<Game>();
+                var game = bootstrapper.GetGame();
                 game.Run();
             }
         }

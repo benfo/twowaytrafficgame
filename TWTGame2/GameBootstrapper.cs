@@ -27,5 +27,10 @@ namespace TWTGame
             container.Register<Game, TwoWayTrafficGame>()
                 .AsSingleton();
         }
+
+        public Game GetGame()
+        {
+            return this.Container.Resolve<Game>();
+        }
     }
 }
