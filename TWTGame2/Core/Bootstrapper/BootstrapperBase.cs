@@ -22,5 +22,7 @@ namespace TWTGame.Core.Bootstrapper
         }
 
         protected abstract TContainer GetContainer();
+
+        public abstract IGame GetGame();
     }
 }

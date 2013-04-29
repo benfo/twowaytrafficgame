@@ -15,6 +15,11 @@ namespace TWTGame.Core.Bootstrapper
             DependencyResolver.SetResolver(new DefaultDependencyResolver(container));
         }
 
+        public override IGame GetGame()
+        {
+            return this.Container.Resolve<IGame>();
+        }
+
         public void Dispose()
         {
             this.Container.Dispose();

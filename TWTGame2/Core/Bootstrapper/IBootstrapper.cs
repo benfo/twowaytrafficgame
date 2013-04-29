@@ -8,5 +8,7 @@ namespace TWTGame.Core.Bootstrapper
     public interface IBootstrapper
     {
         void Initialize();
+        
+        IGame GetGame();
     }
 }

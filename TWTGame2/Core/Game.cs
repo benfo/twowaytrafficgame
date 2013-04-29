@@ -5,9 +5,8 @@ using System.Diagnostics;
 
 namespace TWTGame.Core
 {
-    public abstract class Game : IDisposable
+    public abstract class Game : IGame, IDisposable
     {
-        private bool _disposed;
         private Stopwatch _gameTimer = Stopwatch.StartNew();
 
         public Game()
@@ -61,27 +60,13 @@ namespace TWTGame.Core
         {
         }
 
-        #region Disposable
-
-        ~Game()
-        {
-            Dispose(false);
-        }
-
         public void Dispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            this.Dispose(true);
         }
 
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-            }
-            _disposed = true;
         }
-
-        #endregion Disposable
     }
 }

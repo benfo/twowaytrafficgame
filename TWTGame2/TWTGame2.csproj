@@ -80,6 +80,7 @@
     <Compile Include="Core\Game.cs" />
     <Compile Include="Core\Graphics\IDrawManager.cs" />
     <Compile Include="Core\Graphics\TextureEffect.cs" />
+    <Compile Include="Core\IGame.cs" />
     <Compile Include="GameBootstrapper.cs" />
     <Compile Include="Road.cs" />
     <Compile Include="MovementDirection.cs" />
