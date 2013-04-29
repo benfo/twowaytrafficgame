@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TWTGame.Bootstrapper;
+using TWTGame.Core.Bootstrapper;
 using TWTGame.Core;
 using TWTGame.Core.Graphics;
 using TWTGame.Core.Input;

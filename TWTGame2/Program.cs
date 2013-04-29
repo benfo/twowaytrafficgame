@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TWTGame.Bootstrapper;
+using TWTGame.Core.Bootstrapper;
 using TWTGame.Core;
 namespace TWTGame
 {

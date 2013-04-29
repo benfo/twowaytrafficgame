@@ -1,5 +1,5 @@
 ﻿using System;
-namespace TWTGame.Bootstrapper
+namespace TWTGame.Core.Bootstrapper
 {
     public abstract class BootstrapperBase<TContainer> : IBootstrapper
         where TContainer : class

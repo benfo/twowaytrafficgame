@@ -1,7 +1,7 @@
 ﻿using System;
 using TinyIoC;
 
-namespace TWTGame.Bootstrapper
+namespace TWTGame.Core.Bootstrapper
 {
     public class DefaultBootstrapper : BootstrapperBase<TinyIoCContainer>, IDisposable
     {

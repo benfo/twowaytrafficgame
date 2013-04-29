@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using TinyIoC;
 
-namespace TWTGame.Bootstrapper
+namespace TWTGame.Core.Bootstrapper
 {
     public class DefaultDependencyResolver : DependencyResolverBase<TinyIoCContainer>
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TWTGame.Bootstrapper
+namespace TWTGame.Core.Bootstrapper
 {
     public abstract class DependencyResolverBase<TContainer> : IDependencyResolver
     {
