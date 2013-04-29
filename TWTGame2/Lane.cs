@@ -10,8 +10,8 @@ namespace TWTGame
 {
     public class Lane
     {
-        private float _currentMaxSpeed = 20;
-        private float _currentMinSpeed = 50;
+        private float _currentMaxSpeed = 50;
+        private float _currentMinSpeed = 20;
         private float _maxSpeed = 400;
         private float _distanceUntilNextCar;
         private Car _lastCarAdded;
@@ -21,6 +21,7 @@ namespace TWTGame
         private IRandomizer _randomizer;
         private Surface _carTexture;
         private float _speed;
+        private Func<IEnumerable<Car>> _getActiveCars;
 
         public Lane(IDrawManager drawManager, Player player, IRandomizer randomizer, Rectangle boundingBox, MovementDirection direction)
         {
@@ -38,6 +39,9 @@ namespace TWTGame
                 drawManager.LoadTexture("car", "car.png", TextureEffect.FlippedHorizontal);
 
             this.AddNewCar();
+
+            // Helper functions
+            _getActiveCars = new Func<IEnumerable<Car>>(() => this.Cars.Where(car => car.IsActive));
         }
 
         public Rectangle BoundingBox { get; private set; }
@@ -54,18 +58,15 @@ namespace TWTGame
 
         private void UpdateCarMovements(TimeSpan elapsedTime)
         {
-            this.Cars.ForEach(car =>
+            foreach (var car in _getActiveCars())
             {
-                if (car.IsActive)
-                {
-                    var movement =
-                        _direction == MovementDirection.Right ?
-                        MovementVector.Right :
-                        MovementVector.Left;
-                    movement *= (float)elapsedTime.TotalSeconds * _speed;
-                    car.SetMovement(movement);
-                }
-            });
+                var movement =
+                    _direction == MovementDirection.Right ?
+                    MovementVector.Right :
+                    MovementVector.Left;
+                movement *= (float)elapsedTime.TotalSeconds * _speed;
+                car.SetMovement(movement);
+            }
         }
 
         private void AddNewCar()
@@ -82,13 +83,13 @@ namespace TWTGame
 
         private void CheckForPlayerCollision()
         {
-            this.Cars.ForEach(car =>
+            foreach (var car in this.Cars)
             {
                 if (_player.BoundingBox.IntersectsWith(car.BoundingBox))
                 {
                     _player.Hit();
                 }
-            });
+            }
         }
 
         private float DistanceFromLaneEntryPoint(Car car)
@@ -101,11 +102,16 @@ namespace TWTGame
 
         private void RemoveInactiveCars()
         {
-            var inactiveCars = this.Cars.Where(car => !car.IsActive).ToArray();
+            var inactiveCars =
+                this.Cars
+                    .Where(car => !car.IsActive)
+                    .ToArray()
+                    .AsEnumerable();
+
             foreach (var car in inactiveCars)
             {
-                car.Unload();
                 this.Cars.Remove(car);
+                car.Dispose();
             }
         }
 
@@ -117,22 +123,25 @@ namespace TWTGame
             }
         }
 
-
         public void IncreaseSpeed()
         {
-            _speed += 10;
+            if (_currentMaxSpeed < _maxSpeed)
+            {
+                _currentMaxSpeed += 10;
+            }
+
+            if (_speed < _maxSpeed)
+            {
+                _speed += 10;
+            }
         }
 
         internal void Draw()
         {
-            this.Cars.ForEach(car =>
+            foreach (var car in _getActiveCars())
             {
-                if (car.IsActive)
-                {
-                    _drawManager.Draw(car);
-                }
-            });
+                _drawManager.Draw(car);
+            }
         }
-
     }
 }

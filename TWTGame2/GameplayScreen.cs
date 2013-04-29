@@ -46,7 +46,7 @@ namespace TWTGame
 
         public void Unload()
         {
-            _player.Unload();
+            _player.Dispose();
         }
 
         public void Update(TimeSpan elapsedTime)
