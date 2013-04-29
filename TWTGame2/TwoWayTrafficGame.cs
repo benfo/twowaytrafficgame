@@ -1,6 +1,7 @@
 ﻿using SdlDotNet.Input;
 using System;
 using System.Drawing;
+using TWTGame.Bootstrapper;
 using TWTGame.Core;
 using TWTGame.Core.Graphics;
 using TWTGame.Core.Input;
@@ -17,7 +18,7 @@ namespace TWTGame
         {
             _drawManager = drawManager;
             _keyboard = keyboard;
-            _gameplayScreen = new GameplayScreen(_drawManager, _keyboard);
+            _gameplayScreen = DependencyResolver.Current.GetService<GameplayScreen>();
         }
 
         protected override void Dispose(bool disposing)

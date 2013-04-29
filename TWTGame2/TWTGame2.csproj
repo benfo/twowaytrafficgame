@@ -69,18 +69,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrapper\BootstrapperBase.cs" />
+    <Compile Include="Bootstrapper\DefaultBootstrapper.cs" />
+    <Compile Include="Bootstrapper\DefaultDependencyResolver.cs" />
+    <Compile Include="Bootstrapper\DependencyResolver.cs" />
+    <Compile Include="Bootstrapper\DependencyResolverBase.cs" />
+    <Compile Include="Bootstrapper\IBootstrapper.cs" />
+    <Compile Include="Bootstrapper\IDependencyResolver.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="Core\Game.cs" />
     <Compile Include="Core\Graphics\IDrawManager.cs" />
     <Compile Include="Core\Graphics\TextureEffect.cs" />
+    <Compile Include="GameBootstrapper.cs" />
     <Compile Include="Road.cs" />
     <Compile Include="MovementDirection.cs" />
-    <Compile Include="Core\BoundingBox.cs" />
     <Compile Include="Core\Graphics\DrawManager.cs" />
     <Compile Include="Core\IRandomizer.cs" />
     <Compile Include="Core\Randomizer.cs" />
+    <Compile Include="TinyIoC\TinyIoC.cs" />
     <Compile Include="TwoWayTrafficGame.cs" />
-    <Compile Include="GameManager.cs" />
     <Compile Include="Core\TexturedGameObject.cs" />
     <Compile Include="Core\GameObject.cs" />
     <Compile Include="GameplayScreen.cs" />
@@ -102,6 +109,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

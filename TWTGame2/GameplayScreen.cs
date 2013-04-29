@@ -14,16 +14,16 @@ namespace TWTGame
         private Player _player;
         private Rectangle _playArea;
         private Road _carManager;
-        private Randomizer _randomizer;
+        private IRandomizer _randomizer;
 
-        public GameplayScreen(IDrawManager drawManager, IKeyboard keyboard)
+        public GameplayScreen(IDrawManager drawManager, IKeyboard keyboard, IRandomizer randomizer)
         {
             _drawManager = drawManager;
             _keyboard = keyboard;
             _playArea = drawManager.ScreenSize;
 
             _player = new Player(drawManager.LoadTexture("player", "player.png", TextureEffect.FlippedHorizontal));
-            _randomizer = new Randomizer();
+            _randomizer = randomizer;
 
             _carManager = new Road(_drawManager, _keyboard, _player, _randomizer);
 

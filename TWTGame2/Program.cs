@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TWTGame.Bootstrapper;
+using TWTGame.Core;
 namespace TWTGame
 {
     static class Program
@@ -8,9 +10,11 @@ namespace TWTGame
         [STAThread]
         static void Main()
         {
-            using (var gameManager = new GameManager())
+            using (var bootstrapper = new GameBootstrapper())
             {
-                gameManager.Run();
+                bootstrapper.Initialize();
+                var game = DependencyResolver.Current.GetService<Game>();
+                game.Run();
             }
         }
     }
