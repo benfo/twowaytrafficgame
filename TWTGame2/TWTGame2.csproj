@@ -86,8 +86,8 @@
     <Compile Include="Road.cs" />
     <Compile Include="MovementDirection.cs" />
     <Compile Include="Core\Graphics\DrawManager.cs" />
-    <Compile Include="Core\IRandomizer.cs" />
-    <Compile Include="Core\Randomizer.cs" />
+    <Compile Include="Core\Services\IRandomizer.cs" />
+    <Compile Include="Core\Services\Randomizer.cs" />
     <Compile Include="Core\TinyIoC\TinyIoC.cs" />
     <Compile Include="TwoWayTrafficGame.cs" />
     <Compile Include="Core\TexturedGameObject.cs" />

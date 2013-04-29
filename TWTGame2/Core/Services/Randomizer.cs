@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TWTGame.Core
+namespace TWTGame.Core.Services
 {
     public class Randomizer : IRandomizer
     {
