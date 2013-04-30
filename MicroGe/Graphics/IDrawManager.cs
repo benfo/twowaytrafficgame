@@ -15,5 +15,7 @@ namespace MicroGe.Graphics
         Rectangle ScreenSize { get; }
 
         void Draw(ISprite sprite);
+
+        void Draw(ISprite sprite, TextureEffect effect);
     }
 }

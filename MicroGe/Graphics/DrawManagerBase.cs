@@ -35,6 +35,13 @@ namespace MicroGe.Graphics
             this.Draw((TSprite)sprite);
         }
 
+        void IDrawManager.Draw(ISprite sprite, TextureEffect effect)
+        {
+            this.Draw((TSprite)sprite, effect);
+        }
+
         public abstract void Draw(TSprite sprite);
+
+        public abstract void Draw(TSprite sprite, TextureEffect effect);
     }
 }

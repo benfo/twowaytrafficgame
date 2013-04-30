@@ -38,11 +38,17 @@ namespace MicroGe.Graphics
                 image.Value.Dispose();
             }
         }
+
         public override void Draw(Sprite sprite)
         {
             var sdlSprite = sprite as Sprite;
 
             Video.Screen.Blit(sdlSprite._sprite, new Point((int)sprite.Position.X, (int)sprite.Position.Y));
+        }
+
+        public override void Draw(Sprite sprite, TextureEffect effect)
+        {
+            throw new NotImplementedException();
         }
 
         public override Texture LoadTexture(string name, string path)
