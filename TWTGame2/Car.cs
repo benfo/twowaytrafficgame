@@ -1,7 +1,6 @@
-﻿using SdlDotNet.Graphics;
-using SdlDotNet.Graphics.Sprites;
+﻿using MicroGe;
+using MicroGe.Graphics;
 using System.Drawing;
-using TWTGame.Core.Graphics;
 
 namespace TWTGame
 {
@@ -9,18 +8,18 @@ namespace TWTGame
     {
         public Vector2 Velocity;
 
-        public Car(Vector2 startingPosition, Texture carTexture)
+        public Car(Vector2 startingPosition, ITexture carTexture)
         {
             this.IsActive = true;
-            this.Position = startingPosition;
-            this.Sprite = new Sprite(carTexture.Surface);
+            this.Sprite = new Sprite(carTexture);
+            this.Sprite.Position = startingPosition;
         }
 
         public Rectangle BoundingBox
         {
             get
             {
-                return new Rectangle((int)this.Position.X, (int)this.Position.Y, this.Sprite.Width, this.Sprite.Height);
+                return new Rectangle((int)this.Sprite.Position.X, (int)this.Sprite.Position.Y, this.Sprite.Width, this.Sprite.Height);
             }
         }
 
@@ -29,7 +28,7 @@ namespace TWTGame
         public void SetMovement(Vector2 movement)
         {
             this.Velocity = movement;
-            this.Position += this.Velocity;
+            this.Sprite.Position += this.Velocity;
         }
     }
 }

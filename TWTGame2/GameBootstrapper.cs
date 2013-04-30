@@ -1,8 +1,8 @@
-﻿using TWTGame.Core;
-using TWTGame.Core.Bootstrapper;
-using TWTGame.Core.Graphics;
-using TWTGame.Core.Input;
-using TWTGame.Core.Services;
+﻿using MicroGe;
+using MicroGe.Bootstrapper;
+using MicroGe.Graphics;
+using MicroGe.Input;
+using MicroGe.Services;
 
 namespace TWTGame
 {

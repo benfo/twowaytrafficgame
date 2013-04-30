@@ -1,29 +1,28 @@
-﻿using System;
+﻿using MicroGe.Graphics;
+using MicroGe.Services;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
-using TWTGame.Core;
-using TWTGame.Core.Graphics;
-using TWTGame.Core.Input;
-using TWTGame.Core.Services;
 
 namespace TWTGame
 {
     public class Road
     {
         private IDrawManager _drawManager;
-        private int _laneCount;
+        private int _initialLaneCount;
         private int _laneHeight;
         private Rectangle _playArea;
         private Player _player;
         private IRandomizer _randomizer;
+        private int _maxLaneCount;
 
-        public Road(IDrawManager drawManager, Player player, IRandomizer randomizer)
+        public Road(Player player, IDrawManager drawManager, IRandomizer randomizer)
         {
             _drawManager = drawManager;
             _player = player;
             _laneHeight = 65;
-            this.Lanes = new List<Lane>();
-            _laneCount = 5;
+            _initialLaneCount = 2;
+            _maxLaneCount = 8;
             _randomizer = randomizer;
 
             _playArea = new System.Drawing.Rectangle(
@@ -31,22 +30,57 @@ namespace TWTGame
                 drawManager.ScreenSize.Width,
                 drawManager.ScreenSize.Height - 100);
 
-            for (int i = 0; i < _laneCount; i++)
+            this.Lanes = new List<Lane>();
+            for (int i = 0; i < _initialLaneCount; i++)
             {
                 Lanes.Add(CreateLane(i));
             }
         }
 
+        /// <summary>
+        /// Gets the lanes.
+        /// </summary>
+        public List<Lane> Lanes { get; private set; }
+
         public void Draw()
         {
+            // Draw game objects
             Lanes.ForEach(lane => lane.Draw());
+        }
+
+        public void IncreaseLanes(int count)
+        {
+            var currentLaneCount = this.Lanes.Count;
+            
+            // Cannot add more lanes that the max specified
+            if (currentLaneCount >= _maxLaneCount)
+            {
+                return;
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                // Add new lanes until it reaches the max number 
+                // of lanes that may be added.
+                var newLaneCount = i + currentLaneCount;
+                if (newLaneCount < _maxLaneCount)
+                {
+                    this.Lanes.Add(CreateLane(newLaneCount));
+                }
+            }
         }
 
         public void Update(TimeSpan elapsedTime)
         {
+            // Update game objects
             Lanes.ForEach(lane => lane.Update(elapsedTime));
         }
 
+        /// <summary>
+        /// Creates a new lane. Even numbered lanes will move left, and odd numbered lanes will move right.
+        /// </summary>
+        /// <param name="laneIndex">The lane indes for wich to create a lane for.</param>
+        /// <returns>A new lane.</returns>
         private Lane CreateLane(int laneIndex)
         {
             var laneStartY = _playArea.Height - (laneIndex * _laneHeight);
@@ -68,7 +102,5 @@ namespace TWTGame
 
             return lane;
         }
-
-        public List<Lane> Lanes { get; private set; }
     }
 }

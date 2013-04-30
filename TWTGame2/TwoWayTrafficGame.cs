@@ -1,10 +1,10 @@
 ﻿using SdlDotNet.Input;
 using System;
 using System.Drawing;
-using TWTGame.Core.Bootstrapper;
-using TWTGame.Core;
-using TWTGame.Core.Graphics;
-using TWTGame.Core.Input;
+using MicroGe;
+using MicroGe.Graphics;
+using MicroGe.Input;
+using MicroGe.Bootstrapper;
 
 namespace TWTGame
 {
@@ -39,7 +39,7 @@ namespace TWTGame
 
         protected override void Update(TimeSpan elapsedTime)
         {
-            if (_keyboard.IsKeyDown(Key.Escape))
+            if (_keyboard.IsKeyDown(Keys.Escape))
             {
                 this.Exit();
                 return;

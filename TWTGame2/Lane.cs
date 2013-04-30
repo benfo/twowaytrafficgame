@@ -1,11 +1,10 @@
-﻿using SdlDotNet.Graphics;
+﻿using MicroGe.Graphics;
+using MicroGe.Services;
+using SdlDotNet.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using TWTGame.Core;
-using TWTGame.Core.Graphics;
-using TWTGame.Core.Services;
 
 namespace TWTGame
 {
@@ -20,7 +19,7 @@ namespace TWTGame
         private Player _player;
         private MovementDirection _direction;
         private IRandomizer _randomizer;
-        private Texture _carTexture;
+        private ITexture _carTexture;
         private float _speed;
         private Func<IEnumerable<Car>> _getActiveCars;
 
@@ -141,7 +140,7 @@ namespace TWTGame
         {
             foreach (var car in _getActiveCars())
             {
-                _drawManager.Draw(car);
+                _drawManager.Draw(car.Sprite);
             }
         }
     }

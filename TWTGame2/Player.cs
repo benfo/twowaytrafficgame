@@ -1,7 +1,6 @@
-﻿using SdlDotNet.Graphics;
-using SdlDotNet.Graphics.Sprites;
+﻿using MicroGe;
+using MicroGe.Graphics;
 using System.Drawing;
-using TWTGame.Core.Graphics;
 
 namespace TWTGame
 {
@@ -9,17 +8,17 @@ namespace TWTGame
     {
         public Vector2 Velocity;
 
-        public Player(Texture playerTexture)
+        public Player(ITexture playerTexture)
         {
             this.IsDead = false;
-            this.Sprite = new Sprite(playerTexture.Surface);
+            this.Sprite = new Sprite(playerTexture);
         }
 
         public Rectangle BoundingBox
         {
             get
             {
-                return new Rectangle((int)this.Position.X, (int)this.Position.Y, this.Sprite.Width, this.Sprite.Height);
+                return new Rectangle((int)this.Sprite.Position.X, (int)this.Sprite.Position.Y, this.Sprite.Width, this.Sprite.Height);
             }
         }
 
@@ -39,7 +38,7 @@ namespace TWTGame
             if (!this.IsDead)
             {
                 this.Velocity = movement;
-                this.Position += this.Velocity;
+                this.Sprite.Position += this.Velocity;
             }
         }
     }
