@@ -10,10 +10,10 @@ namespace MicroGe.Graphics
     {
         protected internal SdlDotNet.Graphics.Sprites.Sprite _sprite;
 
-        public Sprite(ITexture texture)
+        public Sprite(Texture texture)
             : base(texture)
         {
-            _sprite = new SdlDotNet.Graphics.Sprites.Sprite(((Texture)texture).Surface);
+            _sprite = new SdlDotNet.Graphics.Sprites.Sprite(texture.Surface);
         }
 
         public override int X

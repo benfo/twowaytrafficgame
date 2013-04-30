@@ -9,14 +9,14 @@ namespace TWTGame
 {
     public class GameplayScreen
     {
-        private IDrawManager _drawManager;
+        private DrawManager _drawManager;
         private IKeyboard _keyboard;
         private Player _player;
         private Rectangle _playArea;
         private Road _road;
         private IRandomizer _randomizer;
 
-        public GameplayScreen(IDrawManager drawManager, IKeyboard keyboard, IRandomizer randomizer)
+        public GameplayScreen(DrawManager drawManager, IKeyboard keyboard, IRandomizer randomizer)
         {
             _drawManager = drawManager;
             _keyboard = keyboard;
@@ -44,7 +44,7 @@ namespace TWTGame
 
         public void Draw()
         {
-            _drawManager.Draw(_player.Sprite);
+            _drawManager.Draw((Sprite)_player.Sprite);
             _road.Draw();
         }
 

@@ -19,11 +19,11 @@ namespace TWTGame
         private Player _player;
         private MovementDirection _direction;
         private IRandomizer _randomizer;
-        private ITexture _carTexture;
+        private Texture _carTexture;
         private float _speed;
         private Func<IEnumerable<Car>> _getActiveCars;
 
-        public Lane(IDrawManager drawManager, Player player, IRandomizer randomizer, Rectangle boundingBox, MovementDirection direction)
+        public Lane(DrawManager drawManager, Player player, IRandomizer randomizer, Rectangle boundingBox, MovementDirection direction)
         {
             this.Cars = new List<Car>();
             this.BoundingBox = boundingBox;

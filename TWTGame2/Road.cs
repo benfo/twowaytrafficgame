@@ -8,7 +8,7 @@ namespace TWTGame
 {
     public class Road
     {
-        private IDrawManager _drawManager;
+        private DrawManager _drawManager;
         private int _initialLaneCount;
         private int _laneHeight;
         private Rectangle _playArea;
@@ -16,7 +16,7 @@ namespace TWTGame
         private IRandomizer _randomizer;
         private int _maxLaneCount;
 
-        public Road(Player player, IDrawManager drawManager, IRandomizer randomizer)
+        public Road(Player player, DrawManager drawManager, IRandomizer randomizer)
         {
             _drawManager = drawManager;
             _player = player;

@@ -6,7 +6,7 @@ using System.IO;
 
 namespace MicroGe.Graphics
 {
-    public class DrawManager : IDrawManager, IDisposable
+    public class DrawManager : DrawManagerBase<Texture, Sprite>, IDisposable
     {
         private Dictionary<string, Texture> _images;
 
@@ -18,7 +18,7 @@ namespace MicroGe.Graphics
 
         public string ContentPath { get; set; }
 
-        public Rectangle ScreenSize
+        public override Rectangle ScreenSize
         {
             get
             {
@@ -26,7 +26,7 @@ namespace MicroGe.Graphics
             }
         }
 
-        public void Clear(Color color)
+        public override void Clear(Color color)
         {
             Video.Screen.Fill(color);
         }
@@ -38,20 +38,19 @@ namespace MicroGe.Graphics
                 image.Value.Dispose();
             }
         }
-
-        public void Draw(ISprite sprite)
+        public override void Draw(Sprite sprite)
         {
             var sdlSprite = sprite as Sprite;
 
             Video.Screen.Blit(sdlSprite._sprite, new Point((int)sprite.Position.X, (int)sprite.Position.Y));
         }
 
-        public ITexture LoadTexture(string name, string path)
+        public override Texture LoadTexture(string name, string path)
         {
             return this.LoadTextureInternal(name, path);
         }
 
-        public ITexture LoadTexture(string name, string path, TextureEffect effect)
+        public override Texture LoadTexture(string name, string path, TextureEffect effect)
         {
             if (effect == TextureEffect.None)
             {
@@ -77,7 +76,7 @@ namespace MicroGe.Graphics
             return flippedTexture;
         }
 
-        public void Update()
+        public override void Update()
         {
             Video.Screen.Update();
         }

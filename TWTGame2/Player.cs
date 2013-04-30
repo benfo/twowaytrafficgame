@@ -8,7 +8,7 @@ namespace TWTGame
     {
         public Vector2 Velocity;
 
-        public Player(ITexture playerTexture)
+        public Player(Texture playerTexture)
         {
             this.IsDead = false;
             this.Sprite = new Sprite(playerTexture);

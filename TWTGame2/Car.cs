@@ -8,7 +8,7 @@ namespace TWTGame
     {
         public Vector2 Velocity;
 
-        public Car(Vector2 startingPosition, ITexture carTexture)
+        public Car(Vector2 startingPosition, Texture carTexture)
         {
             this.IsActive = true;
             this.Sprite = new Sprite(carTexture);
