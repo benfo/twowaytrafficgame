@@ -37,9 +37,6 @@ namespace TWTGame
             }
         }
 
-        /// <summary>
-        /// Gets the lanes.
-        /// </summary>
         public List<Lane> Lanes { get; private set; }
 
         public void Draw()
@@ -51,7 +48,7 @@ namespace TWTGame
         public void IncreaseLanes(int count)
         {
             var currentLaneCount = this.Lanes.Count;
-            
+
             // Cannot add more lanes that the max specified
             if (currentLaneCount >= _maxLaneCount)
             {
@@ -76,13 +73,12 @@ namespace TWTGame
             Lanes.ForEach(lane => lane.Update(elapsedTime));
         }
 
-        /// <summary>
-        /// Creates a new lane. Even numbered lanes will move left, and odd numbered lanes will move right.
-        /// </summary>
-        /// <param name="laneIndex">The lane indes for wich to create a lane for.</param>
-        /// <returns>A new lane.</returns>
         private Lane CreateLane(int laneIndex)
         {
+            /***
+             * Creates a new lane. Even numbered lanes will move left, and odd numbered lanes will move right.
+             */
+
             var laneStartY = _playArea.Height - (laneIndex * _laneHeight);
 
             var laneBounds =
@@ -101,6 +97,12 @@ namespace TWTGame
                     laneDirection);
 
             return lane;
+        }
+
+        public void Unload()
+        {
+            // Unloads all lane resources
+            Lanes.ForEach(lane => lane.Unload());
         }
     }
 }

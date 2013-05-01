@@ -9,6 +9,8 @@ namespace TWTGame
         [STAThread]
         static void Main()
         {
+            // Create and initialize the game bootstrapper,
+            // and start the game!
             using (var bootstrapper = new GameBootstrapper())
             {
                 bootstrapper.Initialize();

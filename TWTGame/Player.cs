@@ -18,15 +18,18 @@ namespace TWTGame
 
         public void Hit()
         {
+            // The player dies
             this.IsDead = true;
         }
         public void Revive()
         {
+            // Make the player alive again
             this.IsDead = false;
         }
 
         public void SetMovement(Vector2 movement)
         {
+            // Only set movement if the player is not dead.
             if (!this.IsDead)
             {
                 this.Velocity = movement;

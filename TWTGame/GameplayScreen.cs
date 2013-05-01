@@ -31,11 +31,9 @@ namespace TWTGame
             this.ResetPlayer();
         }
 
-        /// <summary>
-        /// Resets the player starting position and make sure the player is alive.
-        /// </summary>
         private void ResetPlayer()
         {
+            // Resets the player starting position and make sure the player is alive.
             _player.Sprite.Position = new Vector2(
                 _playArea.Width / 2 - _player.Sprite.Width / 2,
                 _playArea.Height - _player.Sprite.Height);
@@ -51,6 +49,7 @@ namespace TWTGame
         public void Unload()
         {
             _player.Dispose();
+            _road.Unload();
         }
 
         public void Update(TimeSpan elapsedTime)
