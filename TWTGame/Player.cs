@@ -14,14 +14,6 @@ namespace TWTGame
             this.Sprite = new Sprite(playerTexture);
         }
 
-        public Rectangle BoundingBox
-        {
-            get
-            {
-                return new Rectangle((int)this.Sprite.Position.X, (int)this.Sprite.Position.Y, this.Sprite.Width, this.Sprite.Height);
-            }
-        }
-
         public bool IsDead { get; private set; }
 
         public void Hit()

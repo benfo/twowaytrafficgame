@@ -60,6 +60,14 @@ namespace TWTGame
         {
             foreach (var car in _getActiveCars())
             {
+                // If a car is left the lane bounds, deactivate it
+                if (HasCarLeftPlayingArea(car))
+                {
+                    car.Deactivate();
+                    continue;
+                }
+
+                // Update the cars' movement
                 var movement =
                     _direction == MovementDirection.Right ?
                     MovementVector.Right :
@@ -67,6 +75,20 @@ namespace TWTGame
                 movement *= (float)elapsedTime.TotalSeconds * _speed;
                 car.SetMovement(movement);
             }
+        }
+
+        private bool HasCarLeftPlayingArea(Car car)
+        {
+            if (this._direction == MovementDirection.Right && car.BoundingBox.Left >= this.BoundingBox.Right)
+            {
+                return true;
+            }
+            else if (this._direction == MovementDirection.Left && car.BoundingBox.Right <= this.BoundingBox.Left)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private void AddNewCar()

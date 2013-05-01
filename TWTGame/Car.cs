@@ -15,15 +15,17 @@ namespace TWTGame
             this.Sprite.Position = startingPosition;
         }
 
-        public Rectangle BoundingBox
+        public bool IsActive { get; private set; }
+
+        public void Activate()
         {
-            get
-            {
-                return new Rectangle((int)this.Sprite.Position.X, (int)this.Sprite.Position.Y, this.Sprite.Width, this.Sprite.Height);
-            }
+            this.IsActive = true;
         }
 
-        public bool IsActive { get; set; }
+        public void Deactivate()
+        {
+            this.IsActive = false;
+        }
 
         public void SetMovement(Vector2 movement)
         {

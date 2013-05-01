@@ -1,5 +1,6 @@
 ﻿using System;
 using MicroGe.Graphics;
+using System.Drawing;
 
 namespace MicroGe
 {
@@ -13,6 +14,14 @@ namespace MicroGe
             {
                 ((IDisposable)this.Sprite).Dispose();                
                 this.Sprite = null;
+            }
+        }
+
+        public Rectangle BoundingBox
+        {
+            get
+            {
+                return new Rectangle((int)this.Sprite.Position.X, (int)this.Sprite.Position.Y, this.Sprite.Width, this.Sprite.Height);
             }
         }
     }
