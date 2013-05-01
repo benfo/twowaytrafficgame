@@ -25,6 +25,9 @@ namespace TWTGame
             _maxLaneCount = 8;
             _randomizer = randomizer;
 
+            // Set the playing area equal to the screen width and 100 
+            // pixels less on the height. This gives the player a nice 
+            // starting position.
             _playArea = new System.Drawing.Rectangle(
                 0, 0,
                 drawManager.ScreenSize.Width,
@@ -75,9 +78,7 @@ namespace TWTGame
 
         private Lane CreateLane(int laneIndex)
         {
-            /***
-             * Creates a new lane. Even numbered lanes will move left, and odd numbered lanes will move right.
-             */
+            // Creates a new lane. Even numbered lanes will move left, and odd numbered lanes will move right.
 
             var laneStartY = _playArea.Height - (laneIndex * _laneHeight);
 

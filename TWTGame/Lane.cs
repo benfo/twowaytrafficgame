@@ -74,6 +74,12 @@ namespace TWTGame
             }
         }
 
+        public void IncreaseTrafficFlow()
+        {
+            // TODO: Implement traffic flow increase
+        }
+
+
         public void Update(TimeSpan elapsedTime)
         {
             // Updates various game states.

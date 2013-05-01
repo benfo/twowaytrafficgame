@@ -15,6 +15,7 @@ namespace TWTGame
         private Rectangle _playArea;
         private Road _road;
         private IRandomizer _randomizer;
+        private float _playerSpeed = 150f;
 
         public GameplayScreen(DrawManager drawManager, IKeyboard keyboard, IRandomizer randomizer)
         {
@@ -42,23 +43,30 @@ namespace TWTGame
 
         public void Draw()
         {
+            // Draw the player to the screen
             _drawManager.Draw((Sprite)_player.Sprite);
+            
+            // Tell the road to draw
             _road.Draw();
         }
 
         public void Unload()
         {
+            // Unloads resources
             _player.Dispose();
             _road.Unload();
         }
 
         public void Update(TimeSpan elapsedTime)
         {
+            // Tell the road to update
             _road.Update(elapsedTime);
 
+            // Check if the player won or died
             CheckIfPlayerWins();
             CheckIfPlayerDies();
 
+            // Process keyboard input from the player
             CheckForPlayerInput(elapsedTime);
         }
 
@@ -66,6 +74,7 @@ namespace TWTGame
         {
             if (_player.IsDead)
             {
+                // Reset to the starting position
                 this.ResetPlayer();
             }
         }
@@ -76,10 +85,11 @@ namespace TWTGame
             {
                 this.ResetPlayer();
 
-                //_carManager.Lanes.ForEach(lane => lane.IncreaseTrafficFlow());
-                _road.Lanes.ForEach(lane => lane.IncreaseSpeed());
-
+                // Each time the player wins, make the game a little
+                // more difficult
                 _road.IncreaseLanes(1);
+                _road.Lanes.ForEach(lane => lane.IncreaseSpeed());
+                _road.Lanes.ForEach(lane => lane.IncreaseTrafficFlow());
             }
         }
 
@@ -105,7 +115,7 @@ namespace TWTGame
                 movement += MovementVector.Right;
             }
 
-            // Prevent the playe from moving outside of the playing area
+            // Prevent the player from moving outside of the playing area
             movement = RestrictPlayerMovement(movement);
 
             // Set movement on the player
@@ -115,7 +125,7 @@ namespace TWTGame
             }
             else
             {
-                movement *= (float)elapsedTime.TotalSeconds * 150f;
+                movement *= (float)elapsedTime.TotalSeconds * _playerSpeed;
                 _player.SetMovement(movement);
             }
         }
@@ -127,7 +137,8 @@ namespace TWTGame
             futureBounds.X += (int)movement.X;
             futureBounds.Y += (int)movement.Y;
 
-            if (futureBounds.Left <= _playArea.Left || futureBounds.Right >= _playArea.Right)
+            // Check for left, right, top and bottom bounds.
+            if (futureBounds.Left <= _playArea.Left || futureBounds.Right > _playArea.Right)
             {
                 movement.X = 0;
             }

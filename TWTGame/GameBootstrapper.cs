@@ -10,17 +10,18 @@ namespace TWTGame
     {
         protected override void ConfigureContainer(TinyIoC.TinyIoCContainer container)
         {
-            // Core
+            // Register core services
             container.Register<IDrawManager, DrawManager>()
                 .AsSingleton();
             container.Register<IKeyboard, Keyboard>()
                 .AsSingleton();
 
-            // Services
+            // Register the randomizer service
             container.Register<IRandomizer, Randomizer>()
                 .AsSingleton();
 
-            // Game
+            // Register the game, so that it can be constructed
+            // using the IoC container
             container.Register<IGame, TwoWayTrafficGame>()
                 .AsSingleton();
         }
