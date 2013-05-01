@@ -1,20 +1,16 @@
-﻿using MicroGe;
-using SdlDotNet.Core;
+﻿using SdlDotNet.Core;
 using SdlDotNet.Graphics;
-using System;
-using System.Diagnostics;
 
 namespace MicroGe
 {
     public abstract class Game : GameBase
     {
-        private Stopwatch _gameTimer = Stopwatch.StartNew();
-
         public Game()
         {
             // Setup video
             Video.WindowIcon();
             Video.SetVideoMode(800, 600);
+            Video.WindowCaption = "MicroGe Game";
 
             // Setup events
             Events.Tick += (sender, args) =>
@@ -26,13 +22,27 @@ namespace MicroGe
                 this.Exit();
             };
         }
+
         protected override void OnExit()
         {
             Events.QuitApplication();
         }
+
         protected override void OnRun()
         {
             Events.Run();
+        }
+
+        public override string WindowTitle
+        {
+            get
+            {
+                return Video.WindowCaption;
+            }
+            set
+            {
+                Video.WindowCaption = value;
+            }
         }
     }
 }

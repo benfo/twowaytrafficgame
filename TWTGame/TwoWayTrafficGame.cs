@@ -16,6 +16,8 @@ namespace TWTGame
 
         public TwoWayTrafficGame(IDrawManager drawManager, IKeyboard keyboard)
         {
+            WindowTitle = "Two Way Traffic Game";
+
             _drawManager = drawManager;
             _keyboard = keyboard;
             _gameplayScreen = DependencyResolver.Current.GetService<GameplayScreen>();

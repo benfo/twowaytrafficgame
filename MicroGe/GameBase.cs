@@ -7,6 +7,8 @@ namespace MicroGe
     {
         private Stopwatch _gameTimer = Stopwatch.StartNew();
 
+        public virtual string WindowTitle { get; set; }
+
         public void Exit()
         {
             this.OnExit();
@@ -27,15 +29,15 @@ namespace MicroGe
             this.Draw(elapsedTime);
         }
 
-        protected virtual void OnRun()
-        {
-        }
-
         protected virtual void Draw(TimeSpan elapsedTime)
         {
         }
 
         protected virtual void OnExit()
+        {
+        }
+
+        protected virtual void OnRun()
         {
         }
 

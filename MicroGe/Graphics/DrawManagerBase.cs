@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using System.Drawing;
 
 namespace MicroGe.Graphics
 {
@@ -10,25 +6,13 @@ namespace MicroGe.Graphics
         where TTexture : ITexture
         where TSprite : ISprite
     {
-        public abstract void Clear(System.Drawing.Color color);
-
-        ITexture IDrawManager.LoadTexture(string name, string path)
-        {
-            return this.LoadTexture(name, path);
-        }
-
-        public abstract TTexture LoadTexture(string name, string path);
-
-        ITexture IDrawManager.LoadTexture(string name, string path, TextureEffect effect)
-        {
-            return this.LoadTexture(name, path, effect);
-        }
-
-        public abstract TTexture LoadTexture(string name, string path, TextureEffect effect);
-
-        public abstract void Update();
-
         public abstract Rectangle ScreenSize { get; }
+
+        public abstract void Clear(Color color);
+
+        public abstract void Draw(TSprite sprite);
+
+        public abstract void Draw(TSprite sprite, TextureEffect effect);
 
         void IDrawManager.Draw(ISprite sprite)
         {
@@ -40,8 +24,20 @@ namespace MicroGe.Graphics
             this.Draw((TSprite)sprite, effect);
         }
 
-        public abstract void Draw(TSprite sprite);
+        ITexture IDrawManager.LoadTexture(string name, string path)
+        {
+            return this.LoadTexture(name, path);
+        }
 
-        public abstract void Draw(TSprite sprite, TextureEffect effect);
+        ITexture IDrawManager.LoadTexture(string name, string path, TextureEffect effect)
+        {
+            return this.LoadTexture(name, path, effect);
+        }
+
+        public abstract TTexture LoadTexture(string name, string path);
+
+        public abstract TTexture LoadTexture(string name, string path, TextureEffect effect);
+
+        public abstract void Update();
     }
 }
