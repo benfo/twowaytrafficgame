@@ -6,6 +6,10 @@ using TinyIoC;
 
 namespace MicroGe.Bootstrapper
 {
+    /// <summary>
+    /// Default implementation of a dependency resolver that makes use 
+    /// of the TinyIoC container.
+    /// </summary>
     public class DefaultDependencyResolver : DependencyResolverBase<TinyIoCContainer>
     {
         public DefaultDependencyResolver(TinyIoCContainer container)

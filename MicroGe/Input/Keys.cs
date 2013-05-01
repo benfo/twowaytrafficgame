@@ -5,6 +5,9 @@ using System.Text;
 
 namespace MicroGe.Input
 {
+    /// <summary>
+    /// Keys that can be used in the game.
+    /// </summary>
     public enum Keys
     {
         Unknown = 0, /* All unsupported/unmapped keys */

@@ -2,6 +2,9 @@
 
 namespace MicroGe.Graphics
 {
+    /// <summary>
+    /// A base class for all texture implementations.
+    /// </summary>
     public abstract class TextureBase : ITexture, IDisposable
     {
         #region IDisposable

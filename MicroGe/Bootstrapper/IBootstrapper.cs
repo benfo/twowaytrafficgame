@@ -1,15 +1,13 @@
-﻿using MicroGe;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace MicroGe.Bootstrapper
+﻿namespace MicroGe.Bootstrapper
 {
+    /// <summary>
+    /// Provides methods to initialize the bootstrapper and
+    /// retrieve the main game object.
+    /// </summary>
     public interface IBootstrapper
     {
-        void Initialize();
-        
         IGame GetGame();
+
+        void Initialize();
     }
 }

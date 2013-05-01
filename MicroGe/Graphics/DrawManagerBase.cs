@@ -2,6 +2,12 @@
 
 namespace MicroGe.Graphics
 {
+    /// <summary>
+    /// A base class for the drawmanager that provides methods for 
+    /// loading textures and drawing to the screen.
+    /// </summary>
+    /// <typeparam name="TTexture">The type of the texture.</typeparam>
+    /// <typeparam name="TSprite">The type of the sprite.</typeparam>
     public abstract class DrawManagerBase<TTexture, TSprite> : IDrawManager
         where TTexture : ITexture
         where TSprite : ISprite

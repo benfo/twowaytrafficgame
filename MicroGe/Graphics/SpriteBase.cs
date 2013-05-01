@@ -5,6 +5,9 @@ using System.Text;
 
 namespace MicroGe.Graphics
 {
+    /// <summary>
+    /// A base class for all sprite implementations.
+    /// </summary>
     public abstract class SpriteBase : ISprite, IDisposable
     {
         public SpriteBase(ITexture texture)

@@ -2,6 +2,10 @@
 using System;
 namespace MicroGe.Bootstrapper
 {
+    /// <summary>
+    /// Base class that configures the bootstrapper.
+    /// </summary>
+    /// <typeparam name="TContainer">The type of the container.</typeparam>
     public abstract class BootstrapperBase<TContainer> : IBootstrapper
         where TContainer : class
     {

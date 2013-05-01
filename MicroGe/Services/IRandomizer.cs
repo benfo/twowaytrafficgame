@@ -5,6 +5,9 @@ using System.Text;
 
 namespace MicroGe.Services
 {
+    /// <summary>
+    /// Provides methods for generating random numbers.
+    /// </summary>
     public interface IRandomizer
     {
         int Next();

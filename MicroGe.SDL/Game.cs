@@ -1,10 +1,13 @@
 ﻿using SdlDotNet.Core;
 using SdlDotNet.Graphics;
+using System.Diagnostics;
 
 namespace MicroGe
 {
     public abstract class Game : GameBase
     {
+        private Stopwatch _gameTimer = Stopwatch.StartNew();
+
         public Game()
         {
             // Setup video
@@ -21,6 +24,16 @@ namespace MicroGe
             {
                 this.Exit();
             };
+        }
+
+        protected override void OnTick()
+        {
+            var elapsedTime = _gameTimer.Elapsed;
+            _gameTimer.Reset();
+            _gameTimer.Start();
+
+            this.Update(elapsedTime);
+            this.Draw(elapsedTime);
         }
 
         protected override void OnExit()

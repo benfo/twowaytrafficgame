@@ -2,6 +2,9 @@
 
 namespace MicroGe.Graphics
 {
+    /// <summary>
+    /// Provides methods for loading textures and drawing to the screen.
+    /// </summary>
     public interface IDrawManager
     {
         void Clear(Color color);

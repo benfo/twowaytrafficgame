@@ -4,6 +4,10 @@ using TinyIoC;
 
 namespace MicroGe.Bootstrapper
 {
+    /// <summary>
+    /// Default implementation of the bootstrapper that makes use
+    /// of the TinyIoC container.
+    /// </summary>
     public class DefaultBootstrapper : BootstrapperBase<TinyIoCContainer>, IDisposable
     {
         protected sealed override TinyIoCContainer GetContainer()
