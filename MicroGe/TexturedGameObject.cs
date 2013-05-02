@@ -5,7 +5,7 @@ using System.Drawing;
 namespace MicroGe
 {
     /// <summary>
-    /// Base class for all textured MicroGe game objects.
+    /// Base class for all textured game objects that can be drawn to the screen.
     /// </summary>
     public abstract class TexturedGameObject : GameObject, IDisposable
     {

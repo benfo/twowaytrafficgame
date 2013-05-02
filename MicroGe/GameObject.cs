@@ -3,7 +3,7 @@
 namespace MicroGe
 {
     /// <summary>
-    /// Base class for all MicroGe game objects.
+    /// Base class for all game objects.
     /// </summary>
     public abstract class GameObject
     {
